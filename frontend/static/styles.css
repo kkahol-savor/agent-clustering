@@ -1,0 +1,351 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: rgb(34,173,195);
+    background: linear-gradient(0deg, rgba(34,173,195,1) 0%, rgba(9,10,55,1) 100%);
+}
+
+/* Header Section */
+header {
+    background-color: #290c90af;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.welcome-header {
+    color: white;
+}
+
+header #logo {
+    max-height: 50px;
+    margin-bottom: 0;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+header h2 {
+    font-size: 12px;
+    margin: 0;
+    font-weight: 300;
+    color: #bab6d2c0;
+}
+
+header .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Control Bar */
+.control-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.control-button {
+    background-color: #E53935;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.control-button:hover {
+    background-color: #C62828;
+}
+
+/* Chat Container */
+#chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#chat-box {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: rgba(203, 207, 209, 0.773);
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Input Container */
+#input-container {
+    display: flex;
+}
+
+#input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: rgba(217, 222, 225, 0.796);
+    border-radius: 4px;
+}
+
+#input-container button {
+    padding: 10px;
+    border: none;
+    background-color: #00ffbb;
+    color: white;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Chat Messages */
+#chat-box div {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+#chat-box div strong {
+    display: block;
+    font-weight: bold;
+}
+
+#chat-box .citation {
+    font-size: 10px; /* Correctly sets the font size */
+    font-style: italic; /* Italicizes the font */
+    color: rgb(42, 41, 41); /* Sets the font color to gray */
+    margin-top: 5px; /* Adds some spacing */
+}
+
+#chat-box .citation-title {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 8px;
+    color: gray; /* Makes the "References" label gray */
+    margin-top: 10px; /* Adds spacing above */
+}
+
+/* Additional styles for clustering functionality */
+.control-panel {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.control-panel h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Update the modal class to include the .hidden state explicitly */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto; /* Ensure clicks are registered */
+}
+
+/* Add this new rule for hiding the modal */
+.modal.hidden {
+    display: none !important;
+}
+
+/* Update the close button styling for better positioning and interaction */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    z-index: 1100; /* Higher than other elements */
+}
+
+/* Make the modal content have relative positioning for absolute positioned children */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    pointer-events: auto; /* Ensure clicks are registered */
+    position: relative; /* Added for absolute positioning of close button */
+}
+
+#parameter-controls {
+    margin: 15px 0;
+}
+
+.parameter-group {
+    margin-bottom: 10px;
+}
+
+.parameter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#actions {
+    margin-top: 15px;
+    text-align: right;
+}
+
+#actions button {
+    background-color: #00ffbb;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#upload-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#results-content {
+    margin: 15px 0;
+}
+
+/* Report Viewer Styles */
+#report-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.report-header {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.report-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: #00ffbb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.embedded-pdf {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Results section styling */
+.results-summary {
+    margin: 15px 0;
+}
+
+.results-summary h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.results-summary ul {
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.results-summary li {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+}
+
+/* Status indicators */
+.status-indicator {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.status-running {
+    background-color: #ffd700;
+    color: #333;
+}
+
+.status-completed {
+    background-color: #4caf50;
+    color: white;
+}
+
+.status-error {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #upload-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    header .title-container {
+        margin-bottom: 10px;
+        align-items: center;
+    }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering Analysis Chat System</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="title-container">
+            <h1>Clustering Analysis System</h1>
+            <h2>Interactive ML Interface</h2>
+        </div>
+        <img src="/static/Logo.png" alt="Logo" id="logo">
+    </header>
+    <main id="chat-container">
+        <h3 class="welcome-header">Welcome {{username}}</h3>
+        
+        <!-- Control Bar -->
+        <div class="control-bar">
+            <button id="reset-chat" class="control-button">Reset Chat</button>
+        </div>
+        
+        <!-- File Upload Section -->
+        <div id="file-upload" class="control-panel">
+            <h4>Data Upload</h4>
+            <form id="upload-form" enctype="multipart/form-data">
+                <input type="file" id="data-file" name="file" accept=".csv,.json">
+                <button type="submit">Upload Data</button>
+            </form>
+            <div id="upload-status"></div>
+        </div>
+        
+        <!-- Clustering Controls -->
+        <div id="clustering-controls" class="control-panel hidden">
+            <h4>Clustering Configuration</h4>
+            <select id="algorithm-select">
+                <option value="kmeans">K-Means</option>
+                <option value="dbscan">DBSCAN</option>
+                <option value="hdbscan">HDBSCAN</option>
+                <option value="gmm">Gaussian Mixture Models</option>
+                <option value="agglomerative">Agglomerative Clustering</option>
+            </select>
+            
+            <div id="parameter-controls">
+                <!-- Parameter controls will be dynamically generated based on selected algorithm -->
+            </div>
+            
+            <button id="run-clustering">Run Clustering</button>
+        </div>
+        
+        <div id="chat-box"></div>
+        
+        <form id="input-container">
+            <input type="text" id="search_query" placeholder="Ask about your data or clustering results..." required>
+            <input type="hidden" id="topNDocuments" value="5">
+            <button type="submit">Send</button>
+        </form>
+    </main>
+    
+    <!-- Results Modal -->
+    <div id="results-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Clustering Results</h3>
+            <div id="results-content"></div>
+            <div id="actions">
+                <button id="download-report">Download Report</button>
+                <button id="optimize-params">Optimize Parameters</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/chat.js"></script>
+    <script src="/static/clustering.js"></script>
+</body>
+</html>

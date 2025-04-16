@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8000"
+    volumes:
+      - ./frontend/uploads:/app/uploads
+    environment:
+      - AGENT1_URL=http://clustering-agent:8000
+      - AGENT2_URL=http://evaluator-agent:8001
+      - OPENAI_API_KEY=your_openai_api_key
+    depends_on:
+      clustering-agent:
+        condition: service_healthy
+      evaluator-agent:
+        condition: service_started
+    restart: on-failure
+
+  clustering-agent:
+    build:
+      context: ./clustering-agent
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"  # Expose internal port 8000 to external port 8001
+    environment:
+      - DATA_DIR=/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  evaluator-agent:
+    build:
+      context: ./evaluator-agent
+      dockerfile: Dockerfile
+    volumes:
+      - ./evaluator-agent/reports:/app/reports
+    environment:
+      - REPORTS_DIR=/app/reports
+      - AGENT1_URL=http://clustering-agent:8000
+      - BASE_URL=http://frontend:8000
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - FROM_EMAIL=${FROM_EMAIL}
+    depends_on:
+      clustering-agent:
+        condition: service_healthy
