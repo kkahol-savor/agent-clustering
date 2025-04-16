@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering Report Viewer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="title-container">
+            <h1>Clustering Analysis System</h1>
+            <h2>Report Viewer</h2>
+        </div>
+        <img src="/static/Logo.png" alt="Logo" id="logo">
+    </header>
+    <main id="report-container">
+        <h3 class="report-header">Report: {{report_id}}</h3>
+        
+        <div class="report-actions">
+            <a href="/" class="button">Back to Chat</a>
+            <a href="/api/v1/evaluator/report/{{report_id}}" class="button" download>Download PDF</a>
+        </div>
+        
+        <div class="embedded-pdf">
+            <object data="/api/v1/evaluator/report/{{report_id}}" type="application/pdf" width="100%" height="800px">
+                <p>It appears you don't have a PDF plugin for this browser. 
+                You can <a href="/api/v1/evaluator/report/{{report_id}}">click here to download the PDF file</a>.</p>
+            </object>
+        </div>
+    </main>
+</body>
+</html>
